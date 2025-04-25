@@ -38,6 +38,8 @@ kubectl port-forward service/hello-world-service 8080:80
 **then access at :**
 `http://localhost:8080`
 
+![Screenshot From 2025-04-25 22-33-13](https://github.com/user-attachments/assets/5a83be7d-ab3b-4238-bca1-84424959ba56)
+
 ## Option 2: Using Kind Node IP
 **Get the Kind container IP:**
 ```
@@ -47,6 +49,11 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' hell
 `curl http://<KIND_IP>:30007
 `
 
+![Screenshot From 2025-04-25 22-37-40](https://github.com/user-attachments/assets/03852c51-1229-4d80-9194-124ec000f183)
+
+![Screenshot From 2025-04-25 22-37-53](https://github.com/user-attachments/assets/facc2412-b77a-479e-b7f8-23c664fc6418)
+
+
 ## Setup & Install Argo CD
 
 ```
@@ -55,7 +62,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl get pods -n argocd
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
-** then open ** `https://localhost:8080`
+**then open** `https://localhost:8080`
+
+
 
 ## Login credentials:
 ```
@@ -73,3 +82,6 @@ kubectl -n argocd get secret argocd-initial-admin-secret \
 ```
 kubectl apply -f argocd/application.yaml -n argocd
 ```
+
+![Screenshot From 2025-04-25 23-34-38](https://github.com/user-attachments/assets/1d2af469-8769-4dea-a33c-4fdd26712359)
+
