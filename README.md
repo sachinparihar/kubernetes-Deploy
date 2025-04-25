@@ -2,7 +2,7 @@
 
 ## Build Docker Image
 ```
-docker build -t hello-world-nginx -f docker/Dockerfile .
+docker build -t hello-world-nginx -f Docker/Dockerfile .
 ```
 
 ## Create a Kind Cluster
