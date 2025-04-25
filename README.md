@@ -46,3 +46,30 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' hell
 **access the application using curl with the obtained IP:**
 `curl http://<KIND_IP>:30007
 `
+
+## Setup & Install Argo CD
+
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl get pods -n argocd
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+** then open ** `https://localhost:8080`
+
+## Login credentials:
+```
+# Get initial password for admin user
+kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d && echo
+```
+
+### Username: admin
+
+### Password: (from above command)
+
+## Apply Argo CD App to the Cluster
+
+```
+kubectl apply -f argocd/application.yaml -n argocd
+```
